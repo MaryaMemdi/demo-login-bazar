@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #25272C;
+    --foreground: #fff;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'YekanBakh';
+}
+@layer base {
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('../../public/fonts/YekanBakh-VF.ttf');
+  }
+}
+
+
+.p-inputotp-input{
+  background-color: #F6F6F6;
+  width: 49.46px;
+  height: 48px;
+  border-radius: 7.63px;
+
+  outline: none;
+  padding: 7.63px;
+  gap:6.36px;
+
+}
+
+.p-inputotp-input:focus{
+  border: 1.27px solid #D8D8DA;
+  background-color: #fff;
+  outline: none;
+  box-shadow: none;
+}
+.p-component{
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .p-inputotp-input {
+    background-color: #3A3C42; 
+    color: #FFFFFF; 
+  }
+
+  .p-inputotp-input:focus {
+    border: 1.27px solid #383A40; 
+    background-color: #25272C; 
+  }
+  .react-international-phone-input{
+    background-color: #25272C;
+  
+  }
+  .react-international-phone-country-selector-button{
+    background-color: #25272C;
+    
+  }
+  
+}
