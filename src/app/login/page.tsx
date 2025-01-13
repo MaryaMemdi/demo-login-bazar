@@ -167,7 +167,7 @@ const [showPass,setShowPass] = useState(false);
           </div>
           {/* remember me */}
           <div className="inline-flex gap-2 items-center">
-            <input type="checkbox" checked={checked} onClick={()=> setChecked(!checked)} className="" style={{ width: '24px',height:'24px',border:'1px solid #D2D5DA',borderRadius:'4px',borderColor:'#D2D5DA'}}/>
+            <input type="checkbox" checked={checked} onChange={()=> setChecked(!checked)} className="" style={{ width: '24px',height:'24px',border:'1px solid #D2D5DA',borderRadius:'4px',borderColor:'#D2D5DA'}}/>
             <button type="button" className=" text-sm po"  onClick={()=>setChecked(!checked)}>مرا بخاطر بسپار</button>
           </div>
             <button type="submit" className="bg-ProjectColor-primary text-white w-full h-[49px] rounded-md">ورود</button>
