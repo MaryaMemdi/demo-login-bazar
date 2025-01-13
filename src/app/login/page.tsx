@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaTelegramPlane } from "react-icons/fa";
 import { TbBrandInstagram, TbBrandTwitter, TbBrandWhatsapp, TbEyeOff } from "react-icons/tb";
 import { PhoneInput } from 'react-international-phone';
-import 'react-international-phone/style.css';
+
 
 import { InputOtp } from 'primereact/inputotp';
 import Image from 'next/image';
