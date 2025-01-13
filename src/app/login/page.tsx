@@ -17,6 +17,15 @@ const LoginPage = () => {
   // use for phone input 
   const [phone, setPhone] = useState('');
   const [token, setTokens] = useState<number |string| undefined |null>();
+
+  const [focusIndex, setFocusIndex] = useState<null|number>(null);
+
+  const handleFocus = (index:number)=>{
+    setFocusIndex(index);
+  }
+  const handleBlur = ()=>{
+    setFocusIndex(null);
+  }
 //  for checkbox
 const [checked, setChecked] = useState(false);
   const {register,handleSubmit,errors,onSubmit} = useFormValidation({
@@ -30,8 +39,8 @@ const [showPass,setShowPass] = useState(false);
     { id: 2, title: "ایمیل", type: "email" },
   ];
   return (
-    <div className="flex text-right  dark:text-white text-textColor-primary " dir="rtl">
-      <div className="w-[982px]   order-2 justify-between lg:flex flex-col  hidden">
+    <div className="flex text-right  dark:text-white  text-textColor-primary " dir="rtl">
+      <div className="w-full   order-2 justify-between lg:flex flex-col  hidden">
       <div className="w-full m-auto justify-center items-center flex">
         <Image alt="banner" src="icons/frame2.svg" width={554.05} height={554.05} />
 
@@ -52,7 +61,7 @@ const [showPass,setShowPass] = useState(false);
             </div>
       </div>
       {/* login */}
-      <div className="lg:w-[459px] w-[375px] pt-[46px] pb-8 px-[16.5px]   lg:py-[105.44px] lg:px-[52.5px] gap-4 flex flex-col m-auto lg:m-0">
+      <div className="lg:w-[459px] w-[375px] pt-[46px] pb-8 px-[16.5px] dark:bg-[#25272C] bg-white   lg:py-[105.44px] lg:px-[52.5px] gap-4 flex flex-col m-auto lg:m-0">
         {/* frame*/}
         <div className="flex flex-col gap-4">
         
@@ -70,8 +79,8 @@ const [showPass,setShowPass] = useState(false);
             height={162.12}
             className="dark:block hidden"
           />
-          <div className="w-full h-12 text-ProjectColor-primary bg-ProjectColor-50 inline-flex gap-2.5 justify-start items-center rounded-[5px] px-[5px] pt-2.5">
-            <Image alt="lock" src="icons/lock.svg" width={24} height={24}/>
+          <div className="w-full h-12 text-ProjectColor-primary bg-ProjectColor-50 inline-flex gap-2.5 justify-cenetr items-center rounded-[5px]  px-[5px]">
+            <Image alt="lock" src="icons/lock.svg" width={24} height={24} className="pb-1"/>
             <p className="text-xs font-YekanBakh"> مطمئن شوید در دامنه <a href="https://bazarturkey.com">https://bazarturkey.com</a> هستید. </p>
           </div>
         </div>
@@ -104,22 +113,22 @@ const [showPass,setShowPass] = useState(false);
               })}
             </div>
             {chooseButton === 1 ? (
-              <div dir="ltr" className="w-full ">
-
+              <div dir="ltr" className={`w-full ${focusIndex === 3 && 'border-linkColor-primary'}` } id={`${focusIndex === 3 && 'activ'}`}>
+              
               <PhoneInput
               {...register('number')}
               defaultCountry="tr"
               value={phone}
               onChange={(phone) => setPhone(phone)}
-              
-              
+             
+              onFocus={()=>handleFocus(3)}
              
               />
               
               </div>
             ) : (
              
-              <input type="email" dir="ltr" placeholder="email" className="h-12 p-4 rounded-md border border-[#E4E4E4] dark:border-[#444852] px-4 py-3 focus:outline-ProjectColor-50 dark:bg-[#25272C] " {...register('email')}/>
+              <input type="email" dir="ltr" placeholder="email" className="h-12 p-4 rounded-md border border-[#E4E4E4] dark:border-[#444852] px-4 py-3 focus:outline-linkColor-primary  dark:bg-[#25272C] bg-transparent dark:focus:outline-white " {...register('email')}/>
               
             
             )}
@@ -137,7 +146,7 @@ const [showPass,setShowPass] = useState(false);
               <a href="#" className="text-linkColor-primary font-bold">رمز خود را فراموش کرده اید؟</a>
             </div>
             <div
-              className="inline-flex w-full justify-start items-center border border-[#E4E4E4] dark:border-[#444852] rounded-md h-[49px] p-5 gap-2 "
+              className={`inline-flex w-full justify-start items-center border border-[#E4E4E4] dark:border-[#444852] rounded-md h-[49px] p-5 gap-2 dark:hover:border-white hover:border-linkColor-primary hover:border-2 ${focusIndex == 2 && 'border-linkColor-primary border-2 dark:border-white'}`}
               dir="ltr"
             >
               <button onClick={()=>setShowPass(!showPass)} type="button">
@@ -147,7 +156,7 @@ const [showPass,setShowPass] = useState(false);
               
               </button>
               
-              <input type={`${showPass ? 'text':'password'}`} className="focus:outline-none bg-white dark:bg-[#25272C]" {...register('password')} />
+              <input type={`${showPass ? 'text':'password'}`} className="focus:outline-none bg-white dark:bg-[#25272C] w-full " {...register('password')} onFocus={()=> handleFocus(2)} onBlur={handleBlur}/>
             </div>
               {errors['password'] && (
                 <p className="text-xs text-red-500 font-YekanBakh">{errors['password']?.message}</p>

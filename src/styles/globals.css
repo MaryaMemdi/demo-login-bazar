@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #ffffff;
+  --background: #f4f4f4;
+  --foreground: #f4f4f4;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #25272C;
+    --background: #000;
     --foreground: #fff;
   }
 }
@@ -70,14 +70,36 @@ body {
 .react-international-phone-country-selector-button{
   background-color: none;
 }
+.react-international-phone-input{
+  width: 100%;
+
+}
 
 .react-international-phone-input-container{
-    color:#222}
+  width: 100%;
+  border: 1px solid #E4E4E4;
 
+  color:#222}
+  .react-international-phone-input-container:hover{
+ 
+    border:none
+  }
+  #activ{
+    border: 2px solid #3477E8;
+    border-radius: 5px;
+  }
     @media (prefers-color-scheme: dark){
         .react-international-phone-input-container{
             border: 1px solid #444852;
             color: white;
+        }
+        .react-international-phone-input-container:hover{
+          border: 1px solid #fff;
+        }
+
+        #activ{
+          border: 2px solid #fff;
+          border-radius: 5px;
         }
     }
 
