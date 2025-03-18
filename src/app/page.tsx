@@ -19,22 +19,13 @@ import { useTheme } from "./context/ThemeContext";
 import flagIran from "../../public/icons/flags/iran (1).svg";
 import flagGermany from "../../public/icons/flags/germany.svg";
 import flagUSA from "../../public/icons/flags/united-states.svg";
+
 const LoginPage = () => {
-  // use for chose between mobile and email
+  const [isMounted, setIsMounted] = useState(false);
   const [chooseButton, setChooseButton] = useState(1);
-  // use for phone input
   const [phone, setPhone] = useState("");
   const [token, setTokens] = useState<number | string | undefined | null>();
-
   const [focusIndex, setFocusIndex] = useState<null | number>(null);
-
-  const handleFocus = (index: number) => {
-    setFocusIndex(index);
-  };
-  const handleBlur = () => {
-    setFocusIndex(null);
-  };
-  //  for checkbox
   const [checked, setChecked] = useState(false);
   const { register, handleSubmit, errors, onSubmit } = useFormValidation({
     email: "",
@@ -50,6 +41,19 @@ const LoginPage = () => {
   const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
+  const handleFocus = (index: number) => {
+    setFocusIndex(index);
+  };
+  const handleBlur = () => {
+    setFocusIndex(null);
+  };
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -200,7 +204,6 @@ const LoginPage = () => {
                   value={phone}
                   onChange={(phone) => setPhone(phone)}
                   onFocus={() => handleFocus(3)}
-                 
                 />
               </div>
             ) : (
@@ -276,7 +279,6 @@ const LoginPage = () => {
                 value={token}
                 onChange={(e) => setTokens(e.value)}
                 length={6}
-                
               />
             </div>
           </div>

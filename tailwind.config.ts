@@ -28,8 +28,8 @@ export default {
           primary: "#FA5A2A",
           "50": "#FA5A2A26",
         },
-        backgroundLight: "#FFFFFF", // Light mode background
-        backgroundDark: "#25272C", // Dark mode background
+        backgroundLight: "#FFFFFF",
+        backgroundDark: "#25272C",
       },
     },
     variants: {
@@ -39,5 +39,5 @@ export default {
     },
   },
   plugins: [],
-  darkMode: "class", // Ensure class-based dark mode is enabled
+  darkMode: "class",
 } satisfies Config;

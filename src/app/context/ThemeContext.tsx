@@ -15,33 +15,29 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme");
-      return (
-        savedTheme ||
-        (window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light")
-      );
-    }
-    return "light";
-  });
+  const [theme, setTheme] = useState<string | null>(null);
 
   useEffect(() => {
-    document.documentElement.classList.add(theme); // Add the theme class globally
-    return () => {
-      document.documentElement.classList.remove(theme); // Cleanup on unmount
-    };
-  }, [theme]);
+    const savedTheme = localStorage.getItem("theme");
+    const initialTheme =
+      savedTheme ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
+    setTheme(initialTheme);
+    document.documentElement.classList.add(initialTheme);
+  }, []);
 
   const toggleTheme = () => {
+    if (!theme) return;
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
-    document.documentElement.classList.remove(theme); // Remove the current theme class
-    document.documentElement.classList.add(newTheme); // Add the new theme class
-    localStorage.setItem("theme", newTheme); // Persist the theme
+    document.documentElement.classList.remove(theme);
+    document.documentElement.classList.add(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
+
+  if (!theme) return null;
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
