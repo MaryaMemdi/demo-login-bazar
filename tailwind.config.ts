@@ -5,40 +5,39 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}"
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  corePlugins:{
-    textAlign:true,
+  corePlugins: {
+    textAlign: true,
   },
   theme: {
     extend: {
-      fontFamily:{
-        YekanBakh:['YekanBakh']
+      fontFamily: {
+        YekanBakh: ["YekanBakh"],
       },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        textColor:{
-          'primary': '#4D4D4D'
+        textColor: {
+          primary: "#4D4D4D",
         },
-        linkColor:{
-          'primary':'#3477E8'
+        linkColor: {
+          primary: "#3477E8",
         },
-        ProjectColor:{
-          'primary':'#FA5A2A',
-          '50':'#FA5A2A26'
-        }
+        ProjectColor: {
+          primary: "#FA5A2A",
+          "50": "#FA5A2A26",
+        },
+        backgroundLight: "#FFFFFF", // Light mode background
+        backgroundDark: "#25272C", // Dark mode background
       },
     },
-    variants:{
-      extend:{
-        textAlign:['rtl'],
-      }
-    }
+    variants: {
+      extend: {
+        textAlign: ["rtl"],
+      },
+    },
   },
   plugins: [],
-  darkMode: ['variant', [
-    '@media (prefers-color-scheme: dark) { &:not(.light *) }',
-    '&:is(.dark *)',
-  ]],
+  darkMode: "class", // Ensure class-based dark mode is enabled
 } satisfies Config;
