@@ -82,12 +82,13 @@ const LoginPage = () => {
       dir={language === "fa" ? "rtl" : "ltr"}
     >
       <button className="theme-toggle-button" onClick={toggleTheme}>
-        {theme === "dark" ? <FaMoon /> : <FaSun className="text-gray-400" />}
+        {theme === "dark" ? <FaMoon className="text-xl"/> : <FaSun className="text-gray-400 text-xl" />}
       </button>
+      
       <button className="language-toggle-button" onClick={toggleDropdown}>
         {showFlag(language)}
       </button>
-      <div className={`language-dropdown ${dropdownOpen ? "show" : ""}`}>
+      <div className={` flex flex-col gap-1 absolute top-10 right-[51px] bg-gray-300 dark:bg-gray-600 p-2 rounded-lg  ease-linear duration-75 animate-none   ${dropdownOpen ? "show" : "hidden"}`}>
         <button
           onClick={() => {
             setLanguage("fa");
@@ -124,7 +125,7 @@ const LoginPage = () => {
         </div>
       </div>
       {/* login */}
-      <div className="lg:w-[459px] w-[375px] pt-[46px] pb-8 px-[16.5px] dark:bg-[#25272C] bg-white lg:py-[105.44px] lg:px-[52.5px] gap-4 flex flex-col m-auto lg:m-0">
+      <div className="lg:w-[459px] w-[375px] top-0  pb-8 px-[16.5px] dark:bg-[#25272C] bg-white lg:py-[105.44px] lg:px-[52.5px] gap-4 flex flex-col m-auto lg:m-0">
         {/* frame*/}
         <div className="flex flex-col gap-4">
           <Image
@@ -200,6 +201,7 @@ const LoginPage = () => {
               >
                 <PhoneInput
                   {...register("number")}
+                  className='phone'
                   defaultCountry="tr"
                   value={phone}
                   onChange={(phone) => setPhone(phone)}
@@ -312,7 +314,7 @@ const LoginPage = () => {
             {t("login")}
           </button>
         </form>
-        <div className="w-full flex flex-col gap-2 font-YekanBakh -mt-2">
+        <div className="w-full flex flex-col gap-2 font-YekanBakh -mt-2 mb-10 md:-mb-10">
           <button className="bg-[#F6F6F6] text-black w-full h-[49px] rounded-md inline-flex justify-center items-center gap-2">
             <Image width={20} height={20} alt="" src="icons/google.svg" />
             <p>{t("quickLoginGoogle")}</p>
@@ -335,11 +337,12 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <div className="fixed bottom-0 w-full h-[73px] bg-ProjectColor-primary flex justify-center items-center">
-        <div className="w-full max-w-[1200px] flex justify-between items-center px-5 font-YekanBakh text-lg">
-          <div className="flex text-white gap-5">
+      {/* footer */}
+      <div className="fixed bottom-0 w-full h-auto p-1 md:p-4 bg-ProjectColor-primary flex justify-center items-center">
+        <div className="w-full max-w-[1200px] flex md:justify-between items-center px-5 font-YekanBakh text-lg flex-col gap-2 md:flex-row justify-center ">
+          <div className="flex text-white gap-1 text-sm md:text-base lg:text-lg w-full justify-center md:justify-start">
             <p>{t("support")}</p>
-            <p className="border-r border-l px-5">۰۹۳۸ ۵۶۶۳۸۲۹</p>
+            <p className="border-r border-l px-2">۰۹۳۸ ۵۶۶۳۸۲۹</p>
             <p>۰۹۳۸ ۵۶۶۳۸۲۹</p>
           </div>
           <div className="flex gap-10 text-white text-[23px]">

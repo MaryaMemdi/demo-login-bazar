@@ -27,7 +27,7 @@ const translations: Translations = {
     quickLoginGoogle: "ورود سریع با گوگل",
     loginWithFacebook: "ورود با فیسبوک",
     loginWithApple: "ورود با اپل",
-    ensureDomain: " مطمئن شوید در دامنه ",
+    ensureDomain: "  مطمئن شوید در دامنه هستید",
     domain: "https://bazarturkey.com",
   },
   en: {
